@@ -1,0 +1,8 @@
+// global.scss
+
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+
