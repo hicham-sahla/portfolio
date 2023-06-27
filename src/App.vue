@@ -1,26 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <About />
+    <Projects />
+    <Skills />
+    <Contact />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import About from './components/About.vue'
+import Projects from './components/Projects.vue'
+import Skills from './components/Skills.vue'
+import Contact from './components/Contact.vue'
 
 export default {
+  mounted() {
+    const links = document.querySelectorAll('nav a')
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        const target = document.querySelector(e.target.getAttribute('href'))
+        target.scrollIntoView({ behavior: 'smooth' })
+      })
+    })
+  },
   name: 'App',
   components: {
-    HelloWorld
+    About,
+    Projects,
+    Skills,
+    Contact
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+/* Your styles here */
 </style>
